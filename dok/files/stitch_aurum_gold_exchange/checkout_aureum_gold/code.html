@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | AURUM EXCHANGE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#333535",
+                    "on-error": "#690005",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#e5e2e1",
+                    "outline-variant": "#4d4635",
+                    "surface-container-highest": "#333535",
+                    "on-tertiary": "#313030",
+                    "surface-tint": "#e9c349",
+                    "on-primary-fixed": "#241a00",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "tertiary-container": "#b5b2b2",
+                    "inverse-primary": "#735c00",
+                    "surface-dim": "#121414",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "background": "#121414",
+                    "on-primary-container": "#554300",
+                    "error": "#ffb4ab",
+                    "surface-bright": "#38393a",
+                    "secondary": "#c8c6c5",
+                    "inverse-on-surface": "#2f3131",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "on-tertiary-container": "#454545",
+                    "surface-container-high": "#282a2b",
+                    "primary-container": "#d4af37",
+                    "primary": "#f2ca50",
+                    "on-secondary-container": "#b7b5b4",
+                    "secondary-container": "#474746",
+                    "primary-fixed-dim": "#e9c349",
+                    "on-error-container": "#ffdad6",
+                    "on-primary": "#3c2f00",
+                    "surface-container-lowest": "#0c0f0f",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "primary-fixed": "#ffe088",
+                    "on-background": "#e2e2e2",
+                    "outline": "#99907c",
+                    "tertiary": "#d0cecd",
+                    "on-primary-fixed-variant": "#574500",
+                    "on-surface": "#e2e2e2",
+                    "on-surface-variant": "#d0c5af",
+                    "on-secondary": "#313030",
+                    "inverse-surface": "#e2e2e2",
+                    "surface": "#121414",
+                    "surface-container-low": "#1a1c1c",
+                    "on-secondary-fixed-variant": "#474746",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "surface-container": "#1e2020"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "section-padding-sm": "64px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "section-padding-lg": "120px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-completed { color: #f2ca50; }
+        .step-active { color: #f2ca50; border-bottom: 2px solid #f2ca50; }
+        .step-upcoming { color: #d0c5af; opacity: 0.5; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="bg-background border-b border-outline-variant w-full h-20 flex items-center">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter w-full">
+<div class="font-headline-md text-headline-md tracking-tighter text-primary">AURUM EXCHANGE</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Market</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Vaults</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Portfolio</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Secure Trade</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer">account_balance_wallet</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 font-label-caps text-label-caps hover:opacity-80 transition-opacity">Invest Now</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="max-w-container-max mx-auto px-gutter py-section-padding-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Checkout Process -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Progress Indicator -->
+<div class="flex items-center justify-between border-b border-outline-variant pb-4">
+<div class="flex items-center gap-2 step-completed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-caps text-label-caps">Cart</span>
+</div>
+<div class="w-8 h-px bg-outline-variant"></div>
+<div class="flex items-center gap-2 step-active pb-1">
+<span class="font-label-caps text-label-caps">Details</span>
+</div>
+<div class="w-8 h-px bg-outline-variant"></div>
+<div class="flex items-center gap-2 step-upcoming">
+<span class="font-label-caps text-label-caps">Payment</span>
+</div>
+<div class="w-8 h-px bg-outline-variant"></div>
+<div class="flex items-center gap-2 step-upcoming">
+<span class="font-label-caps text-label-caps">Review</span>
+</div>
+</div>
+<!-- Customer Details Form -->
+<section class="space-y-8">
+<h2 class="font-headline-sm text-headline-sm text-primary">Customer Details</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Full Name</label>
+<input class="bg-surface-container-lowest border border-outline-variant p-4 text-on-surface focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="Johnathan Sterling" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Email Address</label>
+<input class="bg-surface-container-lowest border border-outline-variant p-4 text-on-surface focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="sterling@private-wealth.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Shipping Address</label>
+<input class="bg-surface-container-lowest border border-outline-variant p-4 text-on-surface focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="100 Wall Street, Penthouse B, New York, NY" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Phone Number</label>
+<input class="bg-surface-container-lowest border border-outline-variant p-4 text-on-surface focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="+1 (212) 555-0198" type="tel"/>
+</div>
+</div>
+</section>
+<!-- Payment Method -->
+<section class="space-y-8">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-sm text-headline-sm text-primary">Payment Method</h2>
+<div class="bg-surface-variant text-on-surface-variant px-3 py-1 font-label-caps text-[10px] tracking-widest uppercase">Demo Mode - No Real Payment Processed</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-8 opacity-40 cursor-not-allowed">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex flex-col gap-2 md:col-span-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Card Number</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant p-4 text-on-surface cursor-not-allowed" disabled="" placeholder="•••• •••• •••• ••••" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">credit_card</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Expiry Date</label>
+<input class="bg-surface-container-lowest border border-outline-variant p-4 text-on-surface cursor-not-allowed" disabled="" placeholder="MM/YY" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant">CVV</label>
+<input class="bg-surface-container-lowest border border-outline-variant p-4 text-on-surface cursor-not-allowed" disabled="" placeholder="•••" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Compliance Section -->
+<section class="space-y-6 pt-6">
+<div class="flex flex-col gap-4">
+<label class="flex items-start gap-4 cursor-pointer group">
+<input class="mt-1 w-5 h-5 bg-transparent border-2 border-primary text-primary focus:ring-0 rounded-none" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">I accept the Terms of Service and understand the cancellation policy</span>
+</label>
+<label class="flex items-start gap-4 cursor-pointer group">
+<input class="mt-1 w-5 h-5 bg-transparent border-2 border-primary text-primary focus:ring-0 rounded-none" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">I have read and understood the Risk Disclosure - gold prices fluctuate based on global market conditions</span>
+</label>
+<label class="flex items-start gap-4 cursor-pointer group">
+<input class="mt-1 w-5 h-5 bg-transparent border-2 border-primary text-primary focus:ring-0 rounded-none" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">I confirm I am 18+ and legally eligible to purchase precious metals in my jurisdiction</span>
+</label>
+</div>
+<p class="font-body-sm text-body-sm text-primary italic opacity-80 pt-4">
+                        * Prices may change until order is confirmed at payment due to live market volatility.
+                    </p>
+<button class="w-full bg-primary-container text-on-primary-container py-6 font-headline-sm text-headline-sm hover:bg-primary transition-all duration-300 uppercase tracking-widest shadow-lg">
+                        Place Order
+                    </button>
+</section>
+</div>
+<!-- Right Column: Order Summary -->
+<aside class="lg:col-span-4">
+<div class="bg-surface-container border border-outline-variant p-8 sticky top-24">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-8 border-b border-outline-variant pb-4">Order Summary</h3>
+<!-- Item Detail -->
+<div class="flex gap-4 mb-8">
+<div class="w-24 h-24 bg-surface-container-lowest border border-outline-variant flex items-center justify-center p-2">
+<img alt="Gold Bar" class="w-full h-full object-contain" data-alt="A macro studio photograph of a 1oz gold bar by PAMP Suisse, featuring a mirror-like reflective finish and intricate engravings of the Lady Fortuna. The lighting is high-contrast and dramatic, emphasizing the metallic texture and golden brilliance against a deep charcoal background. The composition is minimalist and high-end, evoking luxury bullion investment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATHmj7uWaLQfAjFIX8L45anJixIY5TGU6gGAeFDMEr_m_Cya84OgPPVc9-S6XQNg-QRvZB3JL0lbmGoZPUPqbjFc3-2JyV2EUa2qi38wN0ccyghapNbt_74xpxgvlL82T4dMGnPzkX4jRhacn6eRYLOl8JpHiG_YYzXMk_tjjtuyTbzC2NRz-G7f4vm1Jt5R6QO8I5JWmG57owWMUy0ZjSzsQI57lC9Di1ubAr15IJgThr0_QpCWGaLkfYQaeWjtXNqZUrv0YoTFxj"/>
+</div>
+<div class="flex-1">
+<p class="font-label-caps text-label-caps text-primary mb-1">Item Details</p>
+<h4 class="font-body-md font-bold text-on-surface">1oz Gold Bar - PAMP Suisse</h4>
+<p class="font-body-sm text-on-surface-variant">Quantity: 1</p>
+<p class="font-body-md text-primary mt-2">$2,415.80</p>
+</div>
+</div>
+<!-- Breakdown -->
+<div class="space-y-4 border-t border-outline-variant pt-6">
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span class="text-on-surface">$2,415.80</span>
+</div>
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Spread/Premium</span>
+<span class="text-on-surface">$48.32</span>
+</div>
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Secured Shipping</span>
+<span class="text-on-surface">$25.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Transit Insurance (100%)</span>
+<span class="text-on-surface">$15.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Estimated Tax</span>
+<span class="text-on-surface">$0.00</span>
+</div>
+</div>
+<!-- Total -->
+<div class="mt-8 pt-6 border-t-2 border-primary flex justify-between items-end">
+<div>
+<p class="font-label-caps text-label-caps text-primary">Total Amount</p>
+<p class="font-body-sm text-on-surface-variant italic">USD</p>
+</div>
+<span class="font-headline-md text-headline-md text-primary">$2,504.12</span>
+</div>
+<!-- Trust Signals -->
+<div class="mt-12 space-y-4">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-body-sm uppercase font-label-caps">LBMA Certified Bullion</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">encrypted</span>
+<span class="text-body-sm uppercase font-label-caps">Institutional Grade Security</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-section-padding-sm mt-section-padding-lg">
+<div class="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto px-gutter gap-12">
+<div class="space-y-6 max-w-md">
+<div class="font-headline-sm text-headline-sm text-primary">AURUM EXCHANGE</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    © 2024 Aurum Exchange Institutional. All gold holdings are 100% insured and physically audited. Regulatory compliance ensured by global bullion standards.
+                </p>
+</div>
+<div class="flex flex-col md:flex-row gap-12 md:gap-24">
+<div class="space-y-4">
+<span class="font-label-caps text-label-caps text-primary">Governance</span>
+<ul class="space-y-2">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Insurance Disclosure</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<span class="font-label-caps text-label-caps text-primary">Compliance</span>
+<ul class="space-y-2">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">LBMA Standards</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-colors" href="#">Contact Concierge</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

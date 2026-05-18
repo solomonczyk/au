@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sell Gold | Aureum Gold</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-background": "#e2e2e2",
+                "secondary-fixed-dim": "#c8c6c5",
+                "primary-fixed": "#ffe088",
+                "on-primary-fixed": "#241a00",
+                "tertiary-fixed": "#e5e2e1",
+                "surface": "#121414",
+                "secondary": "#c8c6c5",
+                "primary": "#f2ca50",
+                "on-secondary-container": "#b7b5b4",
+                "surface-container-high": "#282a2b",
+                "on-error-container": "#ffdad6",
+                "error": "#ffb4ab",
+                "on-tertiary": "#313030",
+                "on-primary-fixed-variant": "#574500",
+                "primary-container": "#d4af37",
+                "surface-tint": "#e9c349",
+                "surface-bright": "#38393a",
+                "on-secondary": "#313030",
+                "primary-fixed-dim": "#e9c349",
+                "surface-container": "#1e2020",
+                "secondary-container": "#474746",
+                "on-error": "#690005",
+                "on-secondary-fixed-variant": "#474746",
+                "tertiary": "#d0cecd",
+                "on-primary": "#3c2f00",
+                "on-surface-variant": "#d0c5af",
+                "on-tertiary-fixed-variant": "#474646",
+                "tertiary-fixed-dim": "#c9c6c5",
+                "surface-container-lowest": "#0c0f0f",
+                "outline-variant": "#4d4635",
+                "on-secondary-fixed": "#1c1b1b",
+                "inverse-on-surface": "#2f3131",
+                "on-primary-container": "#554300",
+                "tertiary-container": "#b5b2b2",
+                "on-tertiary-fixed": "#1c1b1b",
+                "on-tertiary-container": "#454545",
+                "inverse-primary": "#735c00",
+                "surface-dim": "#121414",
+                "surface-variant": "#333535",
+                "on-surface": "#e2e2e2",
+                "background": "#121414",
+                "inverse-surface": "#e2e2e2",
+                "error-container": "#93000a",
+                "surface-container-highest": "#333535",
+                "outline": "#99907c",
+                "surface-container-low": "#1a1c1c",
+                "secondary-fixed": "#e5e2e1"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "margin-mobile": "20px",
+                "section-padding-lg": "120px",
+                "container-max": "1280px",
+                "gutter": "24px",
+                "unit": "8px",
+                "section-padding-sm": "64px"
+            },
+            "fontFamily": {
+                "display-lg": ["Playfair Display"],
+                "body-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-md": ["Playfair Display"],
+                "label-caps": ["Inter"],
+                "display-lg-mobile": ["Playfair Display"],
+                "headline-lg": ["Playfair Display"],
+                "body-lg": ["Inter"],
+                "headline-sm": ["Playfair Display"]
+            },
+            "fontSize": {
+                "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-base {
+            background-color: #1e2020;
+            border: 1px solid #4d4635;
+            color: #e2e2e2;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+        .form-input-base:focus {
+            outline: none;
+            border-color: #f2ca50;
+            box-shadow: 0 0 0 1px #f2ca50;
+        }
+        select.form-input-base {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23f2ca50'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky z-50 bg-surface border-b border-outline-variant h-20">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-full">
+<div class="text-headline-sm font-headline-sm tracking-tighter text-primary">AUREUM GOLD</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-300" href="#">Buy</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Sell</a>
+<a class="text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-300" href="#">Prices</a>
+<a class="text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-300" href="#">Vault</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-on-surface-variant font-medium font-body-sm text-body-sm hover:text-primary transition-colors">Login</button>
+<button class="bg-primary text-on-primary font-semibold px-6 py-2.5 rounded hover:opacity-80 transition-opacity">Open Account</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-gutter py-section-padding-sm md:py-section-padding-lg">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
+<!-- Left Column: Form -->
+<div class="md:col-span-7">
+<header class="mb-12">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-4">Request a Selling Quote</h1>
+<p class="text-on-surface-variant text-body-lg">Provide details of your bullion or gold assets for a guaranteed premium valuation within 2 hours.</p>
+</header>
+<form class="space-y-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Item Type</label>
+<select class="form-input-base">
+<option>Gold Bar</option>
+<option>Gold Coin</option>
+<option>Gold Jewelry/Scrap</option>
+<option>Other</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Purity/Karat</label>
+<select class="form-input-base">
+<option>24K 99.99%</option>
+<option>22K</option>
+<option>18K</option>
+<option>14K</option>
+<option>10K</option>
+<option>Unknown</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Approximate Weight</label>
+<div class="flex">
+<input class="form-input-base border-r-0 rounded-r-none" placeholder="0.00" step="0.01" type="number"/>
+<select class="form-input-base w-32 border-l-0 rounded-l-none bg-surface-container">
+<option>Grams</option>
+<option>Troy Oz</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Shipping ZIP Code</label>
+<input class="form-input-base" placeholder="Enter ZIP" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Photo Upload</label>
+<div class="border-2 border-dashed border-outline-variant bg-surface-container-low h-48 flex flex-col items-center justify-center cursor-pointer hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-4xl mb-2">upload_file</span>
+<p class="text-body-sm text-on-surface-variant">Drop files here or <span class="text-primary underline">browse</span></p>
+<p class="text-[10px] text-outline mt-1 uppercase tracking-widest">PNG, JPG up to 10MB</p>
+</div>
+</div>
+<div class="space-y-6 pt-6 border-t border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-background">Contact Information</h3>
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Full Name</label>
+<input class="form-input-base" placeholder="John Doe" type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Email Address</label>
+<input class="form-input-base" placeholder="john@example.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block">Phone Number</label>
+<input class="form-input-base" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-5 font-bold uppercase tracking-widest hover:bg-primary transition-colors shadow-lg" type="submit">
+                        Submit Request for Valuation
+                    </button>
+</form>
+</div>
+<!-- Right Column: Information -->
+<div class="md:col-span-5 space-y-8">
+<!-- Image Placeholder for Context -->
+<div class="w-full h-80 relative overflow-hidden group">
+<img alt="Premium Gold Bullion" class="w-full h-full object-cover" data-alt="A macro photograph of stacked premium gold bars and historical gold coins resting on a dark matte charcoal surface. The lighting is cinematic and low-key, catching the brilliant golden edges of the metal. The mood is one of institutional security and immense physical wealth, with a sophisticated and exclusive atmosphere suitable for a luxury finance platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO90GAgK-I6sVF3zsdelWj--l2Akw95xwzWqVzZvgfSQRqkFe1KrqUzzIAT4Hfc1cBbPkdcIE6kJxsjEfC2vZPRB_gQ3auxs-Tma9mZRQf6GWiEiT-ltd_Il6Xb-xQ5wl8RN_JrOIv08aX2hEXG5Ww56SM0vMFyMnPpi_RbfSlAFxunIQN_g9eERlTF7NP1DTqCu7UEAsfA0v3BK_NL80yDbd5o9FwYoofj95JGl4ji078ocYZREjWp4NtXOZX9091Ea_-LLALjGLR"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<!-- Process Card -->
+<section class="bg-surface-container p-8 md:p-10 border border-outline-variant">
+<h2 class="font-headline-md text-headline-md text-on-background mb-8 border-b border-outline-variant pb-4">Our Valuation Process</h2>
+<div class="space-y-10">
+<div class="flex gap-6">
+<span class="text-primary font-display-lg text-headline-lg opacity-30 leading-none">01</span>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase text-primary mb-1">Spot Price Reference</h4>
+<p class="text-body-sm text-on-surface-variant">Quotes are tied to real-time LBMA spot prices, ensuring you receive the most accurate market value at the moment of request.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-primary font-display-lg text-headline-lg opacity-30 leading-none">02</span>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase text-primary mb-1">Purity Testing</h4>
+<p class="text-body-sm text-on-surface-variant">Professional assaying upon receipt at our secure vault. We use advanced X-ray fluorescence to verify purity without damaging your items.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-primary font-display-lg text-headline-lg opacity-30 leading-none">03</span>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase text-primary mb-1">Final Offer</h4>
+<p class="text-body-sm text-on-surface-variant">A formal, legally binding offer is sent via secure message after physical inspection of weight and condition.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-primary font-display-lg text-headline-lg opacity-30 leading-none">04</span>
+<div>
+<h4 class="font-label-caps text-label-caps uppercase text-primary mb-1">Instant Payout</h4>
+<p class="text-body-sm text-on-surface-variant">Funds released immediately upon your approval via wire transfer or gold-backed credit to your Aureum account.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Warning Box -->
+<div class="bg-primary/5 border border-primary/30 p-8 flex gap-6">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<p class="text-body-sm text-on-surface font-medium leading-relaxed">
+                            Estimate is NOT a final offer. Final price depends on inspection, current market price, purity, weight, condition, and applicable fees.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant relative">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-section-padding-sm max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-2">
+<div class="text-headline-sm font-headline-sm text-on-surface mb-4">AUREUM GOLD</div>
+<p class="text-on-surface-variant text-body-sm max-w-md">© 2024 Aureum Gold. All rights reserved. Member of London Bullion Market Association (LBMA). Ensuring the highest standards of integrity in gold trading.</p>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps uppercase text-primary mb-6">Service</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant text-body-sm hover:text-primary transition-colors" href="#">Vault Security</a></li>
+<li><a class="text-on-surface-variant text-body-sm hover:text-primary transition-colors" href="#">AML Policy</a></li>
+<li><a class="text-on-surface-variant text-body-sm hover:text-primary transition-colors" href="#">Contact Support</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps uppercase text-primary mb-6">Legal</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant text-body-sm hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant text-body-sm hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

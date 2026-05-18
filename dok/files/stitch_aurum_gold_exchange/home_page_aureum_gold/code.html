@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AUREUM GOLD | The Gold Standard of Modern Bullion Trading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #121414;
+            color: #e2e2e2;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#121414",
+                      "on-surface": "#e2e2e2",
+                      "background": "#121414",
+                      "surface-variant": "#333535",
+                      "tertiary-container": "#b5b2b2",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "on-tertiary-container": "#454545",
+                      "inverse-primary": "#735c00",
+                      "on-primary-container": "#554300",
+                      "surface-container-low": "#1a1c1c",
+                      "secondary-fixed": "#e5e2e1",
+                      "surface-container-highest": "#333535",
+                      "outline": "#99907c",
+                      "error-container": "#93000a",
+                      "inverse-surface": "#e2e2e2",
+                      "tertiary": "#d0cecd",
+                      "on-primary": "#3c2f00",
+                      "on-error": "#690005",
+                      "on-secondary-fixed-variant": "#474746",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "inverse-on-surface": "#2f3131",
+                      "surface-container-lowest": "#0c0f0f",
+                      "outline-variant": "#4d4635",
+                      "tertiary-fixed-dim": "#c9c6c5",
+                      "on-surface-variant": "#d0c5af",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "surface-tint": "#e9c349",
+                      "primary-container": "#d4af37",
+                      "primary-fixed-dim": "#e9c349",
+                      "secondary-container": "#474746",
+                      "surface-container": "#1e2020",
+                      "on-secondary": "#313030",
+                      "surface-bright": "#38393a",
+                      "surface-container-high": "#282a2b",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "secondary": "#c8c6c5",
+                      "surface": "#121414",
+                      "tertiary-fixed": "#e5e2e1",
+                      "on-secondary-container": "#b7b5b4",
+                      "primary": "#f2ca50",
+                      "primary-fixed": "#ffe088",
+                      "on-primary-fixed": "#241a00",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-background": "#e2e2e2",
+                      "on-primary-fixed-variant": "#574500",
+                      "on-tertiary": "#313030"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "section-padding-sm": "64px",
+                      "container-max": "1280px",
+                      "section-padding-lg": "120px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Playfair Display"],
+                      "headline-md": ["Playfair Display"],
+                      "body-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "display-lg-mobile": ["Playfair Display"],
+                      "label-caps": ["Inter"],
+                      "headline-sm": ["Playfair Display"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface/95 dark:bg-surface/95 backdrop-blur-md border-b border-outline-variant dark:border-outline-variant docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-gutter h-24 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-display-lg tracking-tighter text-primary dark:text-primary" href="#">AUREUM GOLD</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-all duration-300" href="#">Buy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-all duration-300" href="#">Sell</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-all duration-300" href="#">Prices</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-all duration-300" href="#">Why Gold</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-all duration-300" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-all px-4 py-2">Sign In</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-3 font-label-caps text-label-caps hover:bg-primary transition-all">Open Account</button>
+</div>
+</div>
+</header>
+<!-- Live Price Widget -->
+<div class="bg-surface-container-lowest border-b border-outline-variant/30 py-3 overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter flex items-center justify-center space-x-12 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<span class="font-label-caps text-label-caps text-on-surface-variant">XAU/USD (Spot)</span>
+<span class="font-body-md text-body-md font-bold text-on-surface">$2,042.50 /oz</span>
+<span class="flex items-center text-emerald-400 font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">arrow_drop_up</span>
+                    +0.45%
+                </span>
+</div>
+<div class="hidden lg:flex items-center gap-3">
+<span class="font-label-caps text-label-caps text-on-surface-variant">GOLD BARS (1oz)</span>
+<span class="font-body-md text-body-md text-on-surface">$2,104.12</span>
+</div>
+<div class="hidden lg:flex items-center gap-3">
+<span class="font-label-caps text-label-caps text-on-surface-variant">GOLD COINS (Eagle)</span>
+<span class="font-body-md text-body-md text-on-surface">$2,148.80</span>
+</div>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden border-b border-outline-variant">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="A macro cinematic shot of a stack of heavy 24-karat gold bullion bars arranged in a dimly lit, high-security underground vault. The lighting is low-key and dramatic, with soft amber highlights glinting off the polished gold surfaces. The atmosphere is quiet, prestigious, and secure, utilizing a dark charcoal and rich gold palette to convey institutional stability and timeless wealth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAfnZup0b9m796FvaR5ZCsIpCByQ-Bsbe8c6WP9LAt9zP9J0fBysWu5-J-10kxVBoRaAaLAO-VVtataYigB7M3fGgqg0NRc_0uXrMWJS74i2WYYB1u0kfffXaWDp_0-JRxc63YrhYEYTkYPAHAwjNzGck_dFls0i9TppJ34CPXB_hy16VwbNQyMCK_2LVSuvdzVMqTFM9H02a-uxOsI3drIPBtsOzc6bBuhm6F0duVtcWxVx2B5c--WjPMfehRV7OCWV77BG_2uBrJ"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-gutter w-full">
+<div class="max-w-3xl space-y-8">
+<h1 class="font-display-lg text-display-lg text-on-surface leading-tight">
+                    The Gold Standard of Modern Bullion Trading.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
+                    Secure, transparent, and US-focused. Buy, sell, and store physical gold with institutional-grade security and uncompromising discretion.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary text-on-primary px-10 py-5 font-label-caps text-label-caps text-[14px] hover:bg-primary-fixed-dim transition-all duration-300">
+                        Buy Gold
+                    </button>
+<button class="border-2 border-outline-variant text-on-surface px-10 py-5 font-label-caps text-label-caps text-[14px] hover:bg-surface-variant transition-all duration-300">
+                        Sell Gold
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="py-section-padding-lg bg-surface">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-24">
+<span class="font-label-caps text-label-caps text-primary mb-4 block">INSTITUTIONAL INTEGRITY</span>
+<h2 class="font-display-lg text-headline-lg text-on-surface">Built on Unwavering Trust.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant p-10 hover:border-primary/40 transition-colors group">
+<span class="material-symbols-outlined text-primary mb-6 text-[40px]">shield_person</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Fully Insured Shipping</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                        Every shipment is fully insured by Lloyd's of London, providing absolute peace of mind from our vault to your door.
+                    </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant p-10 hover:border-primary/40 transition-colors group">
+<span class="material-symbols-outlined text-primary mb-6 text-[40px]">verified</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Secure Verification</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                        Rigorous multi-stage purity testing ensures every gram of gold meets the highest international standards.
+                    </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low border border-outline-variant p-10 hover:border-primary/40 transition-colors group">
+<span class="material-symbols-outlined text-primary mb-6 text-[40px]">monitoring</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Transparent Pricing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                        Real-time spot pricing with zero hidden fees. We believe in clear, honest transactions with no fine print.
+                    </p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-low border border-outline-variant p-10 hover:border-primary/40 transition-colors group">
+<span class="material-symbols-outlined text-primary mb-6 text-[40px]">public</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">US-Focused Service</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                        Based in the United States, we provide nationwide logistics and dedicated localized client support.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-section-padding-lg bg-surface-container-lowest border-y border-outline-variant">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="font-label-caps text-label-caps text-primary mb-4 block">THE PROCESS</span>
+<h2 class="font-display-lg text-headline-lg text-on-surface mb-12">Your Journey to Tangible Wealth.</h2>
+<div class="space-y-12">
+<div class="flex gap-8">
+<span class="font-display-lg text-headline-lg text-outline-variant shrink-0">01</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2">Create your account</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Simple, secure registration with professional identity verification.</p>
+</div>
+</div>
+<div class="flex gap-8">
+<span class="font-display-lg text-headline-lg text-outline-variant shrink-0">02</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2">Choose your bullion</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Select from a curated range of high-purity bars and internationally recognized coins.</p>
+</div>
+</div>
+<div class="flex gap-8">
+<span class="font-display-lg text-headline-lg text-outline-variant shrink-0">03</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2">Secure Delivery or Vaulting</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Receive your gold via discreet, insured shipping or choose a high-security vaulting solution.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square border border-outline-variant p-4">
+<img class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700" data-alt="A top-down, minimalist photograph of a single 1oz gold coin resting on a dark, textured slate surface. The lighting is sharp, casting a crisp shadow that emphasizes the intricate relief engravings on the gold. The scene is elegant and high-contrast, reflecting the brand's aesthetic of precision, luxury, and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCswLnHlUfOI1GxL5CQ1Ww34bzeMzbT5IbSRFjIHJbGQ_TdnThReA1ZCmq2HdRLpdyAE4T2fsjqXu3mz-foyapE9yOEZS_dPSSvSsO7WAuR6rw3_P4gJ_DfgBOiXWMGQcvDNKjVqbKFbNWAfJoc_N903R0Z8oh_cCX4-3ydbYpMnKA0I6jo9HvimuWoQINse3PsLhea-cnJ2Cb5DEiQOFTwGoq1AIdlRInLJZ9lEZyDJbWoMA-C7qs_lElBPXqC48NuIie06VYaLX2b"/>
+</div>
+<div class="absolute -bottom-10 -right-10 bg-primary p-12 hidden xl:block">
+<span class="font-display-lg text-headline-lg text-on-primary">24k</span>
+<p class="font-label-caps text-label-caps text-on-primary mt-2">Purity Guarantee</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Gold Section -->
+<section class="py-section-padding-lg bg-surface">
+<div class="max-w-4xl mx-auto px-gutter text-center">
+<span class="font-label-caps text-label-caps text-primary mb-8 block">THE ULTIMATE STORE OF VALUE</span>
+<h2 class="font-display-lg text-headline-lg text-on-surface mb-12 leading-tight">A Timeless Hedge Against Uncertainty.</h2>
+<div class="space-y-8 font-body-lg text-body-lg text-on-surface-variant leading-relaxed text-left border-l-2 border-outline-variant pl-12 ml-6">
+<p>
+                    In an era of digital volatility and inflationary pressure, physical gold remains the bedrock of financial stability. It is the only asset that is not someone else's liability—a tangible, portable, and universally recognized store of value.
+                </p>
+<p>
+                    Aureum Gold facilitates this transition from speculative wealth to permanent value. We provide the modern infrastructure required for institutional-grade gold ownership, ensuring your legacy is protected by the very metal that has anchored economies for millennia.
+                </p>
+</div>
+<div class="mt-20 pt-10 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-left">
+<p class="font-label-caps text-label-caps text-on-surface-variant">LATEST MARKET INSIGHT</p>
+<p class="font-body-md text-body-md text-on-surface mt-2">Gold reaches 6-month high amid shifting monetary policy.</p>
+</div>
+<a class="font-label-caps text-label-caps text-primary hover:underline flex items-center gap-2" href="#">
+                    Read Market Reports <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline-variant full-width py-section-padding-sm">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-2 md:grid-cols-4 gap-gutter lg:gap-12">
+<div class="col-span-2 md:col-span-1 space-y-6">
+<span class="font-display-lg text-display-lg text-primary dark:text-primary">AUREUM GOLD</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    Premium precious metals trading for the discerning investor. Based in NYC, shipping worldwide.
+                </p>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-on-surface mb-6">Products</h5>
+<ul class="space-y-4">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Gold Bars</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Gold Coins</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Secure Storage</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-on-surface mb-6">Resources</h5>
+<ul class="space-y-4">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Selling Gold</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Security</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Trust</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-on-surface mb-6">Legal</h5>
+<ul class="space-y-4">
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Terms of Service</a></li>
+<li><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter mt-16 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                © 2024 Aureum Gold. US-Based Precious Metals Service. Insured by Lloyd's of London. All Rights Reserved.
+            </p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">verified_user</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">account_balance</span>
+</div>
+</div>
+</footer>
+</body></html>
