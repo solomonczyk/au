@@ -1,6 +1,5 @@
-import { products } from "@/lib/products";
-import { ProductGrid } from "@/components/catalog/ProductGrid";
 import { FilterSidebar } from "@/components/catalog/FilterSidebar";
+import { ProductGridWithData } from "@/components/catalog/ProductGridWithData";
 
 export const metadata = {
   title: "Physical Gold Bullion | AUREUM GOLD",
@@ -8,7 +7,12 @@ export const metadata = {
     "Institutional-grade gold bullion bars and coins. LBMA-certified, fully insured, and available for nationwide delivery.",
 };
 
-export default function CatalogPage() {
+export default async function CatalogPage(props: {
+  searchParams?: Promise<Record<string, string>>;
+}) {
+  const searchParams = await props.searchParams;
+  const params = new URLSearchParams(searchParams || {});
+
   return (
     <>
       {/* Disclaimer */}
@@ -35,7 +39,7 @@ export default function CatalogPage() {
 
         <div className="flex flex-col md:flex-row gap-gutter">
           <FilterSidebar />
-          <ProductGrid products={products} />
+          <ProductGridWithData searchParams={params.toString()} />
         </div>
       </main>
     </>

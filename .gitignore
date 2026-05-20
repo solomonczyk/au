@@ -20,7 +20,12 @@ yarn-debug.log*
 yarn-error.log*
 
 # env files
+.env
 .env*.local
+
+# screenshots
+.screenshots/
+screenshot-*.png
 
 # turbo
 .turbo
@@ -28,3 +33,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/src/generated/prisma

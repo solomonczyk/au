@@ -5,11 +5,11 @@ import { WhyGoldSection } from "@/components/home/WhyGoldSection";
 
 export default function HomePage() {
   return (
-    <>
+    <main>
       <HeroSection />
       <TrustSection />
       <HowItWorks />
       <WhyGoldSection />
-    </>
+    </main>
   );
 }

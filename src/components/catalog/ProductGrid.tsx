@@ -1,14 +1,26 @@
-import type { Product } from "@/lib/products";
 import { ProductCard } from "./ProductCard";
 
-export function ProductGrid({ products }: { products: Product[] }) {
+interface ProductGridItem {
+  id: string;
+  slug: string;
+  name: string;
+  type: string;
+  weightGrams: number;
+  weightTroyOz: number;
+  manufacturer: string | null;
+  stockQuantity: number;
+  inStock: boolean;
+  isFeatured: boolean;
+  primaryImage: string | null;
+  currentPriceUsd?: number;
+}
+
+export function ProductGrid({ products }: { products: ProductGridItem[] }) {
   return (
-    <section className="w-full md:w-3/4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
   );
 }

@@ -1,0 +1,475 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// USERS & AUTH
+// ─────────────────────────────────────────────
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+  COMPLIANCE_OFFICER
+}
+
+model User {
+  id                 String    @id @default(cuid())
+  email              String    @unique
+  emailVerified      DateTime?
+  passwordHash       String?
+  name               String?
+  phone              String?
+  role               UserRole  @default(CUSTOMER)
+
+  identityVerified   Boolean   @default(false)
+  idDocumentType     String?
+  idDocumentRef      String?
+  sanctionsChecked   Boolean   @default(false)
+  sanctionsCheckedAt DateTime?
+
+  addresses         Address[]
+  orders            Order[]
+  wishlistItems     WishlistItem[]
+  cartItems         CartItem[]
+  taxExemptions     TaxExemption[]
+  sessions          Session[]
+  accounts          Account[]
+
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([email])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String?
+  provider          String
+  providerAccountId String
+  accessToken       String?
+  refreshToken      String?
+  expiresAt         Int?
+  tokenType         String?
+  scope             String?
+  idToken           String?
+  sessionState      String?
+
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ─────────────────────────────────────────────
+// ADDRESSES
+// ─────────────────────────────────────────────
+
+model Address {
+  id         String   @id @default(cuid())
+  userId     String
+  label      String?
+  firstName  String
+  lastName   String
+  company    String?
+  line1      String
+  line2      String?
+  city       String
+  state      String
+  zipCode    String
+  country    String   @default("US")
+  phone      String?
+  isDefault  Boolean  @default(false)
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders     Order[]
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+// ─────────────────────────────────────────────
+// CATALOG
+// ─────────────────────────────────────────────
+
+enum ProductType {
+  BAR
+  COIN
+  ROUND
+  PLATE
+}
+
+model Product {
+  id                  String        @id @default(cuid())
+  slug                String        @unique
+  sku                 String        @unique
+  name                String
+  description         String
+  shortDescription    String?
+
+  type                ProductType
+  weightGrams         Decimal       @db.Decimal(10, 4)
+  weightTroyOz        Decimal       @db.Decimal(10, 6)
+  purityPercent       Decimal       @db.Decimal(6, 3)
+  manufacturer        String?
+  countryOfOrigin     String?
+  year                Int?
+
+  markupPercent       Decimal       @db.Decimal(5, 2)
+  buybackMarkupPct    Decimal       @db.Decimal(5, 2)
+  fixedPriceUsd       Decimal?      @db.Decimal(10, 2)
+
+  stockQuantity       Int           @default(0)
+  lowStockThreshold   Int           @default(5)
+  isActive            Boolean       @default(true)
+  isFeatured          Boolean       @default(false)
+
+  isIrsReportable     Boolean       @default(false)
+  reportableQtyTrigger Int?
+
+  metaTitle           String?
+  metaDescription     String?
+
+  images              ProductImage[]
+  orderItems          OrderItem[]
+  cartItems           CartItem[]
+  wishlistItems       WishlistItem[]
+  categories          ProductCategory[]
+  priceHistory        PriceSnapshot[]
+
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  @@index([type])
+  @@index([isActive, isFeatured])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  url       String
+  altText   String?
+  isPrimary Boolean @default(false)
+  sortOrder Int     @default(0)
+
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Category {
+  id       String            @id @default(cuid())
+  slug     String            @unique
+  name     String
+
+  products ProductCategory[]
+}
+
+model ProductCategory {
+  productId  String
+  categoryId String
+
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([productId, categoryId])
+}
+
+// ─────────────────────────────────────────────
+// PRICES
+// ─────────────────────────────────────────────
+
+model GoldPrice {
+  id        String   @id @default(cuid())
+  xauUsd    Decimal  @db.Decimal(10, 4)
+  xagUsd    Decimal? @db.Decimal(10, 4)
+  source    String   @default("nfusion")
+  fetchedAt DateTime @default(now())
+
+  @@index([fetchedAt])
+}
+
+model PriceSnapshot {
+  id              String   @id @default(cuid())
+  productId       String
+  priceUsd        Decimal  @db.Decimal(10, 2)
+  buybackPriceUsd Decimal  @db.Decimal(10, 2)
+  spotPriceUsd    Decimal  @db.Decimal(10, 4)
+  snapshotAt      DateTime @default(now())
+
+  product         Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, snapshotAt])
+}
+
+// ─────────────────────────────────────────────
+// CART & WISHLIST
+// ─────────────────────────────────────────────
+
+model CartItem {
+  id            String   @id @default(cuid())
+  userId        String?
+  sessionId     String?
+  productId     String
+  quantity      Int
+  priceAtAddUsd Decimal  @db.Decimal(10, 2)
+  addedAt       DateTime @default(now())
+
+  user          User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product       Product  @relation(fields: [productId], references: [id])
+
+  @@index([userId])
+  @@index([sessionId])
+}
+
+model WishlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  addedAt   DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+}
+
+// ─────────────────────────────────────────────
+// ORDERS
+// ─────────────────────────────────────────────
+
+enum OrderStatus {
+  NEW
+  PAYMENT_PENDING
+  PAID
+  PROCESSING
+  READY_TO_SHIP
+  SHIPPED
+  DELIVERED
+  COMPLETED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  AUTHORIZED
+  CAPTURED
+  FAILED
+  REFUNDED
+  PARTIALLY_REFUNDED
+}
+
+enum ShippingMethod {
+  FEDEX_GROUND
+  FEDEX_OVERNIGHT
+  UPS_GROUND
+  UPS_OVERNIGHT
+  PICKUP
+}
+
+model Order {
+  id                    String          @id @default(cuid())
+  orderNumber           String          @unique
+  userId                String?
+  guestEmail            String?
+  guestPhone            String?
+
+  status                OrderStatus     @default(NEW)
+  paymentStatus         PaymentStatus   @default(PENDING)
+
+  shippingAddressId     String?
+  shippingAddress       Address?        @relation(fields: [shippingAddressId], references: [id])
+  shippingMethod        ShippingMethod
+  trackingNumber        String?
+  carrier               String?
+
+  subtotalUsd           Decimal         @db.Decimal(10, 2)
+  salesTaxUsd           Decimal         @db.Decimal(10, 2) @default(0)
+  salesTaxRate          Decimal         @db.Decimal(5, 4)  @default(0)
+  shippingCostUsd       Decimal         @db.Decimal(10, 2) @default(0)
+  insuranceCostUsd      Decimal         @db.Decimal(10, 2) @default(0)
+  totalUsd              Decimal         @db.Decimal(10, 2)
+
+  goldSpotAtOrderUsd    Decimal         @db.Decimal(10, 4)
+
+  requiresForm8300      Boolean         @default(false)
+  form8300Filed         Boolean         @default(false)
+  form8300FiledAt       DateTime?
+  requiresForm1099b     Boolean         @default(false)
+  form1099bFiled        Boolean         @default(false)
+  customerSsn           String?
+
+  stripePaymentIntentId String?
+  stripeChargeId        String?
+
+  customerNotes         String?
+  adminNotes            String?
+
+  items                 OrderItem[]
+  statusHistory         OrderStatusHistory[]
+  user                  User?           @relation(fields: [userId], references: [id])
+
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  @@index([orderNumber])
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id               String  @id @default(cuid())
+  orderId          String
+  productId        String
+  productName      String
+  productSku       String
+  quantity         Int
+  unitPriceUsd     Decimal @db.Decimal(10, 2)
+  spotPriceAtOrder Decimal @db.Decimal(10, 4)
+  subtotalUsd      Decimal @db.Decimal(10, 2)
+
+  order            Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product          Product @relation(fields: [productId], references: [id])
+}
+
+model OrderStatusHistory {
+  id        String      @id @default(cuid())
+  orderId   String
+  status    OrderStatus
+  note      String?
+  changedBy String?
+  changedAt DateTime    @default(now())
+
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────
+// TAXES
+// ─────────────────────────────────────────────
+
+model StateTaxRule {
+  id              String   @id @default(cuid())
+  stateCode       String   @unique
+  stateName       String
+  isExempt        Boolean
+  taxRate         Decimal? @db.Decimal(5, 4)
+  minThresholdUsd Decimal? @db.Decimal(10, 2)
+  notes           String?
+  effectiveDate   DateTime
+  expiryDate      DateTime?
+  updatedAt       DateTime @updatedAt
+
+  @@index([stateCode])
+}
+
+model TaxExemption {
+  id             String   @id @default(cuid())
+  userId         String
+  stateCode      String
+  certificateRef String
+  expiresAt      DateTime?
+  verifiedAt     DateTime?
+
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────
+// COMPLIANCE
+// ─────────────────────────────────────────────
+
+model SanctionsCheck {
+  id            String   @id @default(cuid())
+  userId        String?
+  email         String?
+  name          String
+  checkProvider String
+  result        String
+  rawResponse   Json?
+  checkedAt     DateTime @default(now())
+}
+
+enum AlertType {
+  STRUCTURING_SUSPECTED
+  SANCTIONS_HIT
+  LARGE_CASH_PAYMENT
+  FORM_8300_REQUIRED
+  FORM_1099B_REQUIRED
+  SUSPICIOUS_PATTERN
+}
+
+model ComplianceAlert {
+  id          String    @id @default(cuid())
+  type        AlertType
+  userId      String?
+  orderId     String?
+  description String
+  severity    String
+  resolved    Boolean   @default(false)
+  resolvedBy  String?
+  resolvedAt  DateTime?
+  createdAt   DateTime  @default(now())
+}
+
+// ─────────────────────────────────────────────
+// CONTENT (CMS)
+// ─────────────────────────────────────────────
+
+model Article {
+  id              String    @id @default(cuid())
+  slug            String    @unique
+  title           String
+  excerpt         String?
+  content         String
+  coverImageUrl   String?
+  categorySlug    String?
+  authorId        String?
+  publishedAt     DateTime?
+  metaTitle       String?
+  metaDescription String?
+  isPublished     Boolean   @default(false)
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([publishedAt])
+  @@index([isPublished])
+}
+
+model FaqItem {
+  id        String  @id @default(cuid())
+  question  String
+  answer    String
+  category  String?
+  sortOrder Int     @default(0)
+  isActive  Boolean @default(true)
+}
+
+model SeoPage {
+  id              String  @id @default(cuid())
+  slug            String  @unique
+  title           String
+  content         String
+  metaTitle       String?
+  metaDescription String?
+  isPublished     Boolean @default(true)
+}

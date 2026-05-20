@@ -13,7 +13,7 @@ export function HeroSection() {
       </div>
       <div className="relative z-20 max-w-container-max mx-auto px-gutter w-full">
         <div className="max-w-3xl space-y-8">
-          <h1 className="font-display text-display-lg text-on-surface leading-tight">
+          <h1 className="font-display text-display-lg-mobile md:text-display-lg text-on-surface leading-tight">
             The Gold Standard of Modern Bullion Trading.
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl">

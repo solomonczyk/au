@@ -37,6 +37,18 @@
   --color-background: #121414;
   --color-on-background: #e2e2e2;
   --color-surface-variant: #333535;
+  --color-primary-fixed: #ffe088;
+  --color-primary-fixed-dim: #e9c349;
+  --color-on-primary-fixed: #241a00;
+  --color-on-primary-fixed-variant: #574500;
+  --color-secondary-fixed: #e5e2e1;
+  --color-secondary-fixed-dim: #c8c6c5;
+  --color-on-secondary-fixed: #1c1b1b;
+  --color-on-secondary-fixed-variant: #474746;
+  --color-tertiary-fixed: #e5e2e1;
+  --color-tertiary-fixed-dim: #c9c6c5;
+  --color-on-tertiary-fixed: #1c1b1b;
+  --color-on-tertiary-fixed-variant: #474646;
 
   /* Fonts */
   --font-display: "Playfair Display", serif;
@@ -44,7 +56,7 @@
 
   /* Spacing */
   --spacing-unit: 8px;
-  --spacing-container-max: 1280px;
+  --width-container-max: 1280px;
   --spacing-gutter: 24px;
   --spacing-margin-mobile: 20px;
   --spacing-section-padding-lg: 120px;
@@ -63,6 +75,11 @@
   --text-display-lg--line-height: 1.1;
   --text-display-lg--letter-spacing: -0.02em;
   --text-display-lg--font-weight: 700;
+
+  --text-display-lg-mobile: 40px;
+  --text-display-lg-mobile--line-height: 1.2;
+  --text-display-lg-mobile--letter-spacing: -0.01em;
+  --text-display-lg-mobile--font-weight: 700;
 
   --text-headline-lg: 48px;
   --text-headline-lg--line-height: 1.2;

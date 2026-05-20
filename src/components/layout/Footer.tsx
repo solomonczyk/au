@@ -32,10 +32,10 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="/sell"
+                href="/catalog?storage=1"
                 className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
               >
-                Sell Gold
+                Secure Storage
               </Link>
             </li>
           </ul>
@@ -45,26 +45,26 @@ export function Footer() {
           <ul className="space-y-4">
             <li>
               <Link
+                href="/sell"
+                className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
+              >
+                Selling Gold
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/about"
                 className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
               >
-                About Us
+                Security
               </Link>
             </li>
             <li>
               <Link
-                href="/contact"
+                href="/about"
                 className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
               >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/faq"
-                className="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors duration-200"
-              >
-                FAQ
+                Trust
               </Link>
             </li>
           </ul>
@@ -93,8 +93,12 @@ export function Footer() {
       </div>
       <div className="max-w-container-max mx-auto px-gutter mt-16 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="font-body-sm text-body-sm text-on-surface-variant">
-          &copy; 2024 Aureum Gold. US-Based Precious Metals Service. All Rights Reserved.
+          &copy; 2024 Aureum Gold. US-Based Precious Metals Service. Insured by Lloyd&apos;s of London. All Rights Reserved.
         </p>
+        <div className="flex gap-6">
+          <span className="material-symbols-outlined text-on-surface-variant text-[20px]">verified_user</span>
+          <span className="material-symbols-outlined text-on-surface-variant text-[20px]">account_balance</span>
+        </div>
       </div>
     </footer>
   );
