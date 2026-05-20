@@ -30,6 +30,10 @@ const envSchema = z.object({
   ENCRYPTION_KEY: z.string().optional(),
 });
 
-export const env = envSchema.parse(process.env);
+// Use safeParse so missing env vars at build time don't crash static generation
+const result = envSchema.safeParse(process.env);
+export const env = result.success
+  ? result.data
+  : (process.env as unknown as z.infer<typeof envSchema>);
 
 export type Env = z.infer<typeof envSchema>;
