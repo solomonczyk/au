@@ -6,7 +6,7 @@ const envSchema = z.object({
 
   // Auth
   NEXTAUTH_URL: z.string().url().default("http://localhost:3000"),
-  NEXTAUTH_SECRET: z.string().min(32),
+  NEXTAUTH_SECRET: z.string().min(32).default("dev-secret-do-not-use-in-production-change-me-pls!!"),
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
 

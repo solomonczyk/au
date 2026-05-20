@@ -82,11 +82,22 @@ export async function getLatestGoldPrice(): Promise<{
   fetchedAt: string;
   source: string;
 }> {
-  const latest = await prisma.goldPrice.findFirst({
-    orderBy: { fetchedAt: "desc" },
-  });
+  try {
+    const latest = await prisma.goldPrice.findFirst({
+      orderBy: { fetchedAt: "desc" },
+    });
 
-  if (!latest) {
+    if (!latest) {
+      return {
+        xauUsd: 2342.15,
+        changeUsd: 0,
+        changePct: 0,
+        direction: "flat",
+        fetchedAt: new Date().toISOString(),
+        source: "default",
+      };
+    }
+  } catch {
     return {
       xauUsd: 2342.15,
       changeUsd: 0,
@@ -119,35 +130,39 @@ export async function getLatestGoldPrice(): Promise<{
 }
 
 export async function getPriceHistory(period: string) {
-  const now = new Date();
-  const periods: Record<string, Date> = {
-    "1d": new Date(now.getTime() - 24 * 60 * 60 * 1000),
-    "1w": new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000),
-    "1m": new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000),
-    "6m": new Date(now.getTime() - 180 * 24 * 60 * 60 * 1000),
-    "1y": new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000),
-    "5y": new Date(now.getTime() - 5 * 365 * 24 * 60 * 60 * 1000),
-  };
+  try {
+    const now = new Date();
+    const periods: Record<string, Date> = {
+      "1d": new Date(now.getTime() - 24 * 60 * 60 * 1000),
+      "1w": new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000),
+      "1m": new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000),
+      "6m": new Date(now.getTime() - 180 * 24 * 60 * 60 * 1000),
+      "1y": new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000),
+      "5y": new Date(now.getTime() - 5 * 365 * 24 * 60 * 60 * 1000),
+    };
 
-  const since = periods[period] || periods["1m"];
+    const since = periods[period] || periods["1m"];
 
-  const prices = await prisma.goldPrice.findMany({
-    where: { fetchedAt: { gte: since } },
-    orderBy: { fetchedAt: "asc" },
-    select: { xauUsd: true, fetchedAt: true },
-  });
+    const prices = await prisma.goldPrice.findMany({
+      where: { fetchedAt: { gte: since } },
+      orderBy: { fetchedAt: "asc" },
+      select: { xauUsd: true, fetchedAt: true },
+    });
 
-  const points = prices.map((p) => ({
-    timestamp: p.fetchedAt.toISOString(),
-    xauUsd: Number(p.xauUsd),
-  }));
+    const points = prices.map((p) => ({
+      timestamp: p.fetchedAt.toISOString(),
+      xauUsd: Number(p.xauUsd),
+    }));
 
-  const values = points.map((p) => p.xauUsd);
-  const stats = {
-    min: values.length ? Math.min(...values) : 0,
-    max: values.length ? Math.max(...values) : 0,
-    avg: values.length ? values.reduce((a, b) => a + b, 0) / values.length : 0,
-  };
+    const values = points.map((p) => p.xauUsd);
+    const stats = {
+      min: values.length ? Math.min(...values) : 0,
+      max: values.length ? Math.max(...values) : 0,
+      avg: values.length ? values.reduce((a, b) => a + b, 0) / values.length : 0,
+    };
 
-  return { period, points, stats };
+    return { period, points, stats };
+  } catch {
+    return { period, points: [], stats: { min: 0, max: 0, avg: 0 } };
+  }
 }

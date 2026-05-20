@@ -6,6 +6,7 @@ import { env } from "./env";
 
 export const authConfig: NextAuthConfig = {
   session: { strategy: "jwt" },
+  secret: env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/auth/login",
     error: "/auth/login",

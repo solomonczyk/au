@@ -1,0 +1,48 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: aureum-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aureum
+      POSTGRES_PASSWORD: aureum_secret
+      POSTGRES_DB: aureum_gold
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aureum -d aureum_gold"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aureum-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://aureum:aureum_secret@postgres:5432/aureum_gold
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: change-this-to-a-random-secret-in-production
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      NEXT_PUBLIC_SITE_NAME: "AUREUM GOLD"
+      NFUSION_API_KEY: ""
+      STRIPE_SECRET_KEY: ""
+      STRIPE_WEBHOOK_SECRET: ""
+      NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ""
+      RESEND_API_KEY: ""
+      EMAIL_FROM: noreply@aureumgold.com
+      GOOGLE_CLIENT_ID: ""
+      GOOGLE_CLIENT_SECRET: ""
+      ENCRYPTION_KEY: ""
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
