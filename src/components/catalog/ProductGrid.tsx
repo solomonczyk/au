@@ -9,7 +9,6 @@ interface ProductGridItem {
   weightTroyOz: number;
   manufacturer: string | null;
   stockQuantity: number;
-  inStock: boolean;
   isFeatured: boolean;
   primaryImage: string | null;
   currentPriceUsd?: number;

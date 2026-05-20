@@ -68,7 +68,6 @@ export async function GET(request: Request) {
     purityPercent: Number(p.purityPercent),
     manufacturer: p.manufacturer,
     stockQuantity: p.stockQuantity,
-    inStock: p.stockQuantity > 0,
     isFeatured: p.isFeatured,
     primaryImage: p.images[0]?.url || null,
     categories: p.categories.map((pc) => pc.category.slug),

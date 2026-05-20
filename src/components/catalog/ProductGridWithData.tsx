@@ -13,7 +13,6 @@ interface Product {
   purityPercent: number;
   manufacturer: string | null;
   stockQuantity: number;
-  inStock: boolean;
   isFeatured: boolean;
   primaryImage: string | null;
   categories: string[];

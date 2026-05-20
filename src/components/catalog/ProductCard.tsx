@@ -12,7 +12,6 @@ interface ProductCardData {
   weightTroyOz: number;
   manufacturer: string | null;
   stockQuantity: number;
-  inStock: boolean;
   isFeatured: boolean;
   primaryImage: string | null;
   currentPriceUsd?: number;
@@ -36,7 +35,7 @@ export function ProductCard({ product }: { product: ProductCardData }) {
               <span className="material-symbols-outlined text-[48px]">image</span>
             </div>
           )}
-          {product.inStock && (
+          {product.stockQuantity > 0 && (
             <span className="absolute top-4 right-4 bg-primary text-background font-label-caps text-[10px] px-2 py-1">
               IN STOCK
             </span>
@@ -87,10 +86,10 @@ export function ProductCard({ product }: { product: ProductCardData }) {
                 weight: `${product.weightTroyOz}oz`,
               })
             }
-            disabled={!product.inStock}
+            disabled={product.stockQuantity <= 0}
             className="w-full bg-primary text-background py-3 font-label-caps text-label-caps hover:bg-primary-container transition-colors active:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {product.inStock ? "ADD TO ORDER" : "OUT OF STOCK"}
+            {product.stockQuantity > 0 ? "ADD TO ORDER" : "OUT OF STOCK"}
           </button>
           <Link
             href={`/catalog/${product.slug}`}

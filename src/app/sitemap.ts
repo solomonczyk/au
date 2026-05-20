@@ -3,10 +3,15 @@ import { prisma } from "@/lib/prisma";
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://aureumgold.com";
 
 export default async function sitemap() {
-  const articles = await prisma.article.findMany({
-    where: { isPublished: true },
-    select: { slug: true, updatedAt: true },
-  });
+  let articles: { slug: string; updatedAt: Date }[] = [];
+  try {
+    articles = await prisma.article.findMany({
+      where: { isPublished: true },
+      select: { slug: true, updatedAt: true },
+    });
+  } catch {
+    // Database unavailable during build — serve static pages only
+  }
 
   const staticPages = [
     { url: BASE_URL, lastModified: new Date(), priority: 1.0 },

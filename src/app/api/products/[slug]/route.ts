@@ -56,7 +56,6 @@ export async function GET(
     buybackPriceUsd: Number(buybackPriceUsd.toFixed(2)),
     markupPercent: Number(product.markupPercent),
     stockQuantity: product.stockQuantity,
-    inStock: product.stockQuantity > 0,
     isIrsReportable: product.isIrsReportable,
     images: product.images.map((img) => ({
       url: img.url,
