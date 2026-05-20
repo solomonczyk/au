@@ -1,33 +1,29 @@
-import NextAuth from "next-auth";
-import { authConfig } from "@/lib/auth.config";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-const { auth } = NextAuth(authConfig);
+function isAuthenticated(request: NextRequest): boolean {
+  const cookie = request.headers.get("cookie") || "";
+  return cookie.includes("next-auth.session-token");
+}
 
-export default auth((req) => {
-  const { pathname } = req.nextUrl;
-  const isLoggedIn = !!req.auth;
+export default function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const isLoggedIn = isAuthenticated(request);
 
   if (pathname.startsWith("/account") && !isLoggedIn) {
-    return NextResponse.redirect(new URL("/auth/login", req.url));
+    return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  if (pathname.startsWith("/admin")) {
-    if (!isLoggedIn) {
-      return NextResponse.redirect(new URL("/auth/login", req.url));
-    }
-    const role = ((req.auth?.user as { role?: string })?.role) || "";
-    if (role !== "ADMIN" && role !== "COMPLIANCE_OFFICER") {
-      return NextResponse.redirect(new URL("/", req.url));
-    }
+  if (pathname.startsWith("/admin") && !isLoggedIn) {
+    return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
   if (isLoggedIn && pathname.startsWith("/auth")) {
-    return NextResponse.redirect(new URL("/account", req.url));
+    return NextResponse.redirect(new URL("/account", request.url));
   }
 
   return NextResponse.next();
-});
+}
 
 export const config = {
   matcher: ["/account/:path*", "/admin/:path*", "/auth/:path*"],
