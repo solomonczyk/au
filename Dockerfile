@@ -3,10 +3,12 @@ FROM node:20-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json package-lock.json* ./
-RUN npm ci --only=production --ignore-scripts
+RUN npm ci --ignore-scripts
 
 # Stage 2: Build
 FROM node:20-alpine AS builder
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -19,6 +21,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS="--max-old-space-size=512"
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs

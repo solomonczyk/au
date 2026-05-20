@@ -1,6 +1,7 @@
 services:
   postgres:
-    image: postgres:16-alpine
+    image: postgres:16
+    platform: linux/amd64
     container_name: aureum-db
     restart: unless-stopped
     environment:
@@ -23,6 +24,7 @@ services:
       dockerfile: Dockerfile
     container_name: aureum-app
     restart: unless-stopped
+    profiles: ["production"]
     ports:
       - "3000:3000"
     environment:

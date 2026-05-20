@@ -82,8 +82,10 @@ export async function getLatestGoldPrice(): Promise<{
   fetchedAt: string;
   source: string;
 }> {
+  let latest: { id: string; xauUsd: number; fetchedAt: Date; source: string } | null = null;
+
   try {
-    const latest = await prisma.goldPrice.findFirst({
+    latest = await prisma.goldPrice.findFirst({
       orderBy: { fetchedAt: "desc" },
     });
 
